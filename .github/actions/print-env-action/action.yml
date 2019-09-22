@@ -1,0 +1,6 @@
+name: 'Print environment variables'
+description: 'Print environment variables'
+
+runs:
+  using: 'node12'
+  main: 'main.js'
