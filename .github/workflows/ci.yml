@@ -22,7 +22,7 @@ jobs:
         java-version: '1.8'
 
     - run: env
-    - run: ls -la ~/.m2/
+    - run: mvn -V help:effective-settings
 
 
 
