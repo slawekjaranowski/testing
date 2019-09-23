@@ -1,0 +1,11 @@
+name: 'Set environment variables'
+description: 'Set environment variables'
+
+inputs:
+  envs:
+    description: "environment value list to set"
+    required: true
+
+runs:
+  using: 'node12'
+  main: 'main.js'
