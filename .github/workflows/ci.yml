@@ -22,8 +22,8 @@ jobs:
         java-version: '1.8'
 
     - run: env
-    - run: mvn -V help:effective-settings
-
+    - run: mvn -V -B help:effective-settings
+    - run:  ls -la ~/.
 
 
   env-info:
