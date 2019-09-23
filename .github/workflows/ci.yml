@@ -16,5 +16,6 @@ jobs:
     - uses: ./.github/actions/set-env-action
       with:
         name: "test2_env"
-        value: "test2_value"
+        value: ${{ secrets.TEST_SECRET }}
+
     - run: env
