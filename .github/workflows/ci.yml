@@ -17,8 +17,13 @@ jobs:
       with:
         name: "test2_env"
         value: ${{ secrets.TEST_SECRET }}
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '1.8'
 
     - run: env
+    - run: ls -la ~/.m2/
+
 
 
   env-info:
