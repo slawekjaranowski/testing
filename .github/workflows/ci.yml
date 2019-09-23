@@ -13,4 +13,8 @@ jobs:
       with:
         name: "test_env"
         value: "test_value"
-    - uses: hmarr/debug-action@v1.0.0
+    - uses: ./.github/actions/set-env-action
+      with:
+        name: "test2_env"
+        value: "test2_value"
+    - run: env
