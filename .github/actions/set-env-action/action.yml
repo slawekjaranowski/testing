@@ -2,8 +2,11 @@ name: 'Set environment variables'
 description: 'Set environment variables'
 
 inputs:
-  envs:
-    description: "environment value list to set"
+  name:
+    description: "environment name to set"
+    required: true
+  value:
+    description: "environment value to set"
     required: true
 
 runs:

@@ -2,8 +2,9 @@ const core = require('@actions/core');
 
 async function run() {
   try {
-      const envs = core.getInput("envs");
-      console.infoe(envs);
+      const name = core.getInput("name");
+      const value = core.getInput("value");
+      core.exportVariable(name, value);
   } catch (error) {
     core.setFailed(error.message);
   }
