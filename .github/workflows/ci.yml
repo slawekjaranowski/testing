@@ -9,12 +9,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
     - uses: ./.github/actions/set-env-action
       with:
         name: "test_env"
         value: "test_value"
         test1: value1
         test.test2: value2
+        test_test3_username: value3
+        test_test3_passs: value4
 
     - uses: ./.github/actions/set-env-action
       with:
