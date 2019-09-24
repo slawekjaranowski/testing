@@ -5,6 +5,9 @@ async function run() {
       const name = core.getInput("name");
       const value = core.getInput("value");
       core.exportVariable(name, value);
+
+      console.info(process.env);
+
   } catch (error) {
     core.setFailed(error.message);
   }

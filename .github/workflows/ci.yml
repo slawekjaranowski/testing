@@ -13,6 +13,9 @@ jobs:
       with:
         name: "test_env"
         value: "test_value"
+        test1: value1
+        test.test2: value2
+
     - uses: ./.github/actions/set-env-action
       with:
         name: "test2_env"
