@@ -88,3 +88,7 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
         shell: bash
+      - name: dump  github_event
+        run: cat $GITHUB_EVENT_PATH
+        shell: bash
+
