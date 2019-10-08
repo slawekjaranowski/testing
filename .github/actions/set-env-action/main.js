@@ -1,12 +1,11 @@
 const core = require('@actions/core');
 
+const job = require('./job');
+
 async function run() {
   try {
-      const name = core.getInput("name");
-      const value = core.getInput("value");
-      core.exportVariable(name, value);
 
-      console.info(process.env);
+    job.run();
 
   } catch (error) {
     core.setFailed(error.message);
