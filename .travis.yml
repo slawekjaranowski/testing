@@ -6,9 +6,10 @@ env:
   global:
     - SONAR_ORG: "simplify4u"
     - M2_CACHE_CLEAN_DIR: "test*"
+    - MY_REPO: "s4u/testing"
 
 import:
   - source: s4u/travis:install.yml@master
   - source: s4u/travis:m2-cache.yml@master
-  - source: ./install.yml
+  - source: s4u/travis:standard-jobs.yml@master
 
