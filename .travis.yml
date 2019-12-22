@@ -5,6 +5,7 @@ language: java
 env:
   global:
     - SONAR_ORG: "simplify4u"
+    - M2_CACHE_CLEAN_DIR: "test*"
 
 import:
   - source: ./install.yml
