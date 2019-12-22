@@ -9,5 +9,6 @@ env:
 
 import:
   - source: s4u/travis:install.yml@master
+  - source: s4u/travis:m2-cache.yml@master
   - source: ./install.yml
 
