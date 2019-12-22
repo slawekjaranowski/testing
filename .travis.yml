@@ -1,0 +1,11 @@
+version: ~> 1.0
+
+language: java
+
+env:
+  global:
+    - SONAR_ORG: "simplify4u"
+
+import:
+  - source: ./install.yml
+
