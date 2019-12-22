@@ -8,5 +8,6 @@ env:
     - M2_CACHE_CLEAN_DIR: "test*"
 
 import:
+  - source: s4u/travis:install.yml@master
   - source: ./install.yml
 
