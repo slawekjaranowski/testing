@@ -21,12 +21,12 @@ jobs:
       with:
         override: true
 
-    - run: env
-    - run:  ls -la ~/.
-    - run: mvn -V help:effective-settings
+#    - run: env
+#    - run:  ls -la ~/.
+#    - run: mvn -V help:effective-settings
     - run: mvn clean verify
-    - run:  ls -la ~/.
-    - run:  ls -la ~/.m2/
+#    - run:  ls -la ~/.
+#    - run:  ls -la ~/.m2/
 
 
   env-info:
