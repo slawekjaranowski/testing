@@ -22,6 +22,7 @@ jobs:
     - run: env
     - run:  ls -la ~/.
     - run: mvn -V help:effective-settings
+    - run: mvn clean verify
     - run:  ls -la ~/.
     - run:  ls -la ~/.m2/
 
