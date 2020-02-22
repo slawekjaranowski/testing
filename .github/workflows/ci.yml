@@ -22,7 +22,7 @@ jobs:
         override: false
 
 #    - run: env
-#    - run:  ls -la ~/.
+    - run: cat ~/.m2/settings.xml
     - run: mvn -V help:effective-settings
     - run: mvn clean verify
 #    - run:  ls -la ~/.
