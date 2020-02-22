@@ -19,11 +19,11 @@ jobs:
     - name: maven-setings-action
       uses: s4u/maven-settings-action@v1.1
       with:
-        override: true
+        override: false
 
 #    - run: env
 #    - run:  ls -la ~/.
-#    - run: mvn -V help:effective-settings
+    - run: mvn -V help:effective-settings
     - run: mvn clean verify
 #    - run:  ls -la ~/.
 #    - run:  ls -la ~/.m2/
