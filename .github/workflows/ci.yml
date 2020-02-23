@@ -21,7 +21,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     name: build-${{ matrix.os }}-jdk${{ matrix.java }}
-    if:  startsWith( github.event.head_commit.message , 'Version change')
+    if:  ! startsWith( github.event.head_commit.message , 'Version change')
 
     steps:
     - uses: actions/checkout@v1
