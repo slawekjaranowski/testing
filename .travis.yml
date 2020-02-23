@@ -1,6 +1,7 @@
 version: ~> 1.0
 
 language: java
+os: windows
 
 env:
   global:
