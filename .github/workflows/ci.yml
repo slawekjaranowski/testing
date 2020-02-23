@@ -24,13 +24,14 @@ jobs:
     if: startsWith( github.event.head_commit.message , '[maven-release-plugin] prepare release') != true
 
     steps:
+      - uses: actions/checkout@v2.0.0
+
       - uses: actions/cache@v1.1.2
         with:
           path: ~/.m2/repository
           key:          ${{ matrix.os }}-jdk${{ matrix.java }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ matrix.os }}-jdk${{ matrix.java }}-maven-
 
-      - uses: actions/checkout@v1
 
       - uses: actions/setup-java@v1
         with:
@@ -61,47 +62,3 @@ jobs:
       - run: mvn clean verify
       - run:  ls -R1 ~/.m2/
         shell: bash
-
-
-  env-info:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-      fail-fast: false
-    runs-on: ${{ matrix.os }}
-
-    steps:
-      - name: Dump Env
-        run: env
-        shell: bash
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-        shell: bash
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-        shell: bash
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-        shell: bash
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-        shell: bash
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-        shell: bash
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-        shell: bash
-
