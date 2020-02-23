@@ -24,37 +24,43 @@ jobs:
     if: startsWith( github.event.head_commit.message , '[maven-release-plugin] prepare release') != true
 
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/cache@v1.1.2
+        with:
+          path: ~/.m2/repository
+          key:          ${{ matrix.os }}-jdk${{ matrix.java }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ matrix.os }}-jdk${{ matrix.java }}-maven-
 
-    - uses: actions/setup-java@v1
-      with:
-        java-version: ${{ matrix.java }}
+      - uses: actions/checkout@v1
 
-    - uses: s4u/maven-settings-action@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
 
-    - name: jdk8 on linux
-      id: master-build
-      run: echo "::set-output name=master::true"
-      if: >
-        matrix.os == 'ubuntu-latest' &&
-        matrix.java == '8' &&
-        github.event_name == 'push' &&
-        startsWith(github.repository, 's4u/')
+      - uses: s4u/maven-settings-action@v2
 
-    - name: test master - true
-      run: echo "Master"
-      if: steps.master-build.outputs.master == 'true'
+      - name: chek for master build
+        id: master-build
+        run: echo "::set-output name=master::true"
+        if: >
+          matrix.os == 'ubuntu-latest' &&
+          matrix.java == '8' &&
+          github.event_name == 'push' &&
+          startsWith(github.repository, 's4u/')
 
-    - name: test master - false
-      run: echo "No master"
-      if: steps.master-build.outputs.master != 'true'
+      - name: master build
+        run: echo "Master"
+        if: steps.master-build.outputs.master == 'true'
 
-#    - run: env
-    - run: cat ~/.m2/settings.xml
-    - run: mvn -V help:effective-settings
-    - run: mvn clean verify
-    - run:  ls -R1 ~/.m2/
-      shell: bash
+      - name: non master build
+        run: echo "No master"
+        if: steps.master-build.outputs.master != 'true'
+
+      #    - run: env
+      - run: cat ~/.m2/settings.xml
+      - run: mvn -V help:effective-settings
+      - run: mvn clean verify
+      - run:  ls -R1 ~/.m2/
+        shell: bash
 
 
   env-info:
