@@ -26,8 +26,17 @@ jobs:
     - uses: s4u/maven-settings-action@v2
 
     - name: jdk8 on linux
-      run: echo jdk8 on linux
+      id: master-build
+      run: echo "::set-output name=master::true"
       if: matrix.os == 'ubuntu-latest' && matrix.java == '8'
+
+    - name: test master - true
+      run: echo "Master"
+      if: steps.master-build.outputs.master == 'true'
+
+    - name: test master - false
+      run: echo "No master"
+      if: steps.master-build.outputs.master != 'true'
 
 #    - run: env
     - run: cat ~/.m2/settings.xml
