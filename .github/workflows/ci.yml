@@ -14,6 +14,7 @@ jobs:
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
+    name: build-${{ matrix.os }}-jdk${{ matrix.java }}
 
     steps:
     - uses: actions/checkout@v1
@@ -22,10 +23,11 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
 
-    - run: echo "::set-env name=testenv1::value1"
-      shell: bash
-
     - uses: s4u/maven-settings-action@v2
+
+    - name: jdk8 on linux
+      run: echo jdk8 on linux
+      if: matrix.os == 'ubuntu-latest' && matrix.java == '8'
 
 #    - run: env
     - run: cat ~/.m2/settings.xml
