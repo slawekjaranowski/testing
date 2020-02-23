@@ -22,6 +22,9 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
 
+    - run: echo "::set-env name=testenv1::value1"
+      shell: bash
+
     - uses: s4u/maven-settings-action@v2
 
 #    - run: env
@@ -29,6 +32,7 @@ jobs:
     - run: mvn -V help:effective-settings
     - run: mvn clean verify
     - run:  ls -R1 ~/.m2/
+      shell: bash
 
 
   env-info:
