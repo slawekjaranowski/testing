@@ -12,7 +12,6 @@ on:
 
 jobs:
   build:
-    if: !startsWith(github.event.head_commit.message, '[maven-release-plugin] prepare release')
 
     strategy:
       matrix:
@@ -22,6 +21,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     name: build-${{ matrix.os }}-jdk${{ matrix.java }}
+    if: !startsWith(github.event.head_commit.message, '[maven-release-plugin] prepare release')
 
     steps:
     - uses: actions/checkout@v1
