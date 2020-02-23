@@ -5,10 +5,10 @@ on:
     branches:
       - 'master'
     tags:
-      - 'v[0-9]*'
   pull_request:
     branches:
       - 'master'
+    tags:
 
 jobs:
   build:
