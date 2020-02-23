@@ -7,7 +7,13 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+      fail-fast: false
+
+    runs-on: ${{ matrix.os }}
+
 
     steps:
     - uses: actions/checkout@v1
@@ -16,8 +22,7 @@ jobs:
       with:
         java-version: '1.8'
 
-    - name: maven-setings-action
-      uses: s4u/maven-settings-action@v2
+    - uses: s4u/maven-settings-action@v2
 
 #    - run: env
     - run: cat ~/.m2/settings.xml
