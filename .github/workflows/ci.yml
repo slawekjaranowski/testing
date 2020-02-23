@@ -28,7 +28,11 @@ jobs:
     - name: jdk8 on linux
       id: master-build
       run: echo "::set-output name=master::true"
-      if: matrix.os == 'ubuntu-latest' && matrix.java == '8'
+      if: >
+        matrix.os == 'ubuntu-latest' &&
+        matrix.java == '8' &&
+        github.event_name == 'push' &&
+        startsWith(github.repository, 's4u/')
 
     - name: test master - true
       run: echo "Master"
