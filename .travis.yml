@@ -13,3 +13,9 @@ import:
   - source: s4u/travis:m2-cache.yml@master
   - source: s4u/travis:standard-jobs.yml@master
 
+addons:
+  sonarcloud:
+    organization: "simplify4u"
+
+efore_script:
+  - env
