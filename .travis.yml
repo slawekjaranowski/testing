@@ -17,5 +17,4 @@ addons:
   sonarcloud:
     organization: "simplify4u"
 
-efore_script:
-  - env
+
