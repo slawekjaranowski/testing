@@ -1,4 +1,4 @@
-name: Env-Info
+name: test2
 
 on:
   push:
@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -H "Authorization: token ${{ github.token }}" -i https://api.github.com/orgs/s4u
+          curl -H "Authorization: token ${{ github.token }}" -i https://api.github.com/user
