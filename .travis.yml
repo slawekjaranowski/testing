@@ -11,10 +11,25 @@ env:
 import:
   - source: s4u/travis:install.yml@master
   - source: s4u/travis:m2-cache.yml@master
-  - source: s4u/travis:standard-jobs.yml@master
 
-addons:
-  sonarcloud:
-    organization: "simplify4u"
+os:
+  - linux
+  - osx
+  - windows
 
+jobs:
+  include:
+      - name: "jdk8 - linux"
+        jdk: openjdk8
+        os: linux
+        script:
+          - ../utils/mvn-run.sh clean package
 
+      - name: "jdk11"
+        jdk: openjdk11
+
+      - name: "jdk13"
+        jdk: openjdk13
+
+script:
+  - ../utils/mvn-run.sh     clean verify
