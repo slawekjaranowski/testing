@@ -23,6 +23,7 @@
         <relativePath />
     </parent>
 
+
     <groupId>test.example.com</groupId>
     <artifactId>test</artifactId>
 
