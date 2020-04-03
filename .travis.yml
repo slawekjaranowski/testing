@@ -2,20 +2,10 @@ version: ~> 1.0
 
 language: java
 
-env:
-  global:
-    - SONAR_ORG: "simplify4u"
-    - M2_CACHE_CLEAN_DIR: "test*"
-    - MY_REPO: "s4u/testing"
+addons:
+  sonarcloud:
+    organization: "simplify4u"
 
-import:
-  - source: s4u/travis:install.yml@master
-  - source: s4u/travis:m2-cache.yml@master
-
-os:
-  - linux
-  - osx
-  - windows
 
 jobs:
   include:
@@ -23,13 +13,7 @@ jobs:
         jdk: openjdk8
         os: linux
         script:
-          - ../utils/mvn-run.sh clean package
+          - echo "SONARQUBE_SCANNER_PARAMS=$SONARQUBE_SCANNER_PARAMS"
+          - mvn help:help
 
-      - name: "jdk11"
-        jdk: openjdk11
 
-      - name: "jdk13"
-        jdk: openjdk13
-
-script:
-  - ../utils/mvn-run.sh     clean verify
