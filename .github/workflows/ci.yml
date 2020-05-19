@@ -46,7 +46,7 @@ jobs:
           matrix.os == 'ubuntu-latest' &&
           matrix.java == '8' &&
           github.event_name == 'push' &&
-          startsWith(github.repository, 's4u/')
+          github.repository_owner == 's4u'
 
       - name: master build
         run: echo "Master"
