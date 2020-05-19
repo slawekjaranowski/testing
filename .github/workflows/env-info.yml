@@ -46,6 +46,3 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
         shell: bash
-      - name: ip
-        run: curl ifconfig.io
-        shell: bash
