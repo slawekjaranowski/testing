@@ -46,7 +46,8 @@ jobs:
           matrix.os == 'ubuntu-latest' &&
           matrix.java == '8' &&
           github.event_name == 'push' &&
-          github.repository_owner == 's4u'
+          github.repository_owner == 's4u' &&
+          github.ref == 'refs/heads/master'
 
       - name: master build
         run: echo "Master"
