@@ -1,0 +1,15 @@
+name: Bind Milestone
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+jobs:
+  bind-milestone:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Code-Hex/auto-milestone-binder@v1.0.1
+    with:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
