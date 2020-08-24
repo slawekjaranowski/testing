@@ -3,6 +3,9 @@ name: Env-Info
 on:
   push:
   pull_request:
+  issues:
+    types: [opened]
+
 
 jobs:
   env-info:
