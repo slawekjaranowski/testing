@@ -1,12 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "::add-matcher::./.github/actions/docker1/errors.json"
 
-trap 'catch $?' ERR
+trap "error $1" ERR
 
 ERROR=0
 
-catch() {
+error() {
     echo "::error::Something went wrong - error code: $1"
     ERROR=1
 }
