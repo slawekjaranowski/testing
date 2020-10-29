@@ -1,0 +1,13 @@
+{
+  "problemMatcher": [
+    {
+      "owner": "errors",
+      "pattern": [
+        {
+          "regexp": "^.*error: (.*)$",
+          "message": 1
+        }
+      ]
+    }
+  ]
+}
