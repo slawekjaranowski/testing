@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: docker1
-        use: ./.github/actions/docker1
+        uses: ./.github/actions/docker1
   test2:
     runs-on: ubuntu-latest
     steps:
