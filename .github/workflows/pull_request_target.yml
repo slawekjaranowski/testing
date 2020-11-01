@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: 'refs/pull/${{ github.event.number }}/merge'
 
       - name: show files
         run: ls -l
@@ -21,6 +23,9 @@ jobs:
         run: |
           echo "$TEST_SECRET" | wc
           echo "$TEST_SECRET" | md5sum
+
+      - name: Dump Env
+        run: env
 
       - name: Dump GitHub context
         env:
