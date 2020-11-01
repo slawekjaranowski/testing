@@ -1,0 +1,26 @@
+on:
+  pull_request_target:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: show files
+        run: ls -l
+
+      - name: Test secret
+        env:
+          TEST_SECRET: ${{ secrets.TEST1 }}
+        run: |
+          echo "$TEST_SECRET" | wc
+          echo "$TEST_SECRET" | md5sum
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
