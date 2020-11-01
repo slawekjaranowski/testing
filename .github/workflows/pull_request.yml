@@ -1,3 +1,5 @@
+name: pull_request
+
 on:
   pull_request:
     branches:
@@ -15,7 +17,7 @@ jobs:
 
       - name: Test secret
         env:
-          TEST_SECRET: ${{ secrets.TEST1 }}
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
         run: |
           echo "$TEST_SECRET" | wc
           echo "$TEST_SECRET" | md5sum
